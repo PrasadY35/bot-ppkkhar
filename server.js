@@ -8,8 +8,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ✅ Enable CORS to allow requests from your GitHub Pages site
+app.use(cors({
+    origin: "*",  // Change this to your exact frontend URL if needed
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
-app.use(cors()); // ✅ This enables CORS to allow frontend requests
 
 app.post("/ask", async (req, res) => {
     try {
@@ -35,6 +41,11 @@ app.post("/ask", async (req, res) => {
         console.error("Error:", error);
         res.status(500).json({ error: "Something went wrong!" });
     }
+});
+
+// ✅ Debugging route to check if server is working
+app.get("/", (req, res) => {
+    res.send("AI Backend is Running! 🚀");
 });
 
 app.listen(PORT, () => {
