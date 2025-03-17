@@ -70,8 +70,8 @@
 
             // Send request to OpenAI API
             document.getElementById("chatBox").innerHTML += `<p><strong>AI:</strong> Thinking... 🤔</p>`;
-
-            const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            
+           const response = await fetch("https://bot-ppkkhar-production.up.railway.app/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
