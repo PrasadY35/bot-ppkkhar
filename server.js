@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 
 // ✅ API route to fetch AI response
-app.post("/ask", async (req, res) => {
+app.get("/ask", async (req, res) => {
     try {
         const userMessage = req.body.message;
         const apiKey = process.env.OPENAI_API_KEY;
